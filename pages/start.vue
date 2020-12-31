@@ -3,7 +3,7 @@
 </template>
 
 <script>
-	import { LoginByWx } from '@/api/api.js'
+	import { LoginByWx, GetUserInfo } from '@/api/api.js'
 	export default{
 		data() {
 			return {
@@ -20,6 +20,9 @@
 						data: {
 							code:res.code,
 						}
+					}).then(res=>{
+						console.log(res)
+						uni.setStorageSync('sessionToken', res.data.UUID)
 					})
 				}
 			})
@@ -27,8 +30,8 @@
 		methods:{
 			getuserinfo(e){
 				console.log(e)
-				LoginByWx({
-					data: e.detail
+				GetUserInfo({
+					data: e.detail.userInfo
 				})
 			}
 		}

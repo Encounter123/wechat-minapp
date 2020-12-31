@@ -39,6 +39,7 @@ const weRequest = (url, params = {}) => {
   return new Promise((resolve, reject) => {
 		uni.request({...sendObj,
 			success:function (res) {
+				console.log(res)
 				if(res.statusCode!=200){
 					if (res.data.msg.indexOf('token')!=-1) {
 						uni.clearStorage()
