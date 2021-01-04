@@ -116,6 +116,11 @@
 </script>
 
 <style>
+	view, scroll-view, textarea {
+		box-sizing: border-box;
+		font-family: "PingFang SC", serif;
+	}
+	
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
 
