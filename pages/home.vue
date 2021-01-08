@@ -33,7 +33,9 @@
 		</view>
 		
 		
-		
+		<button @click="login">登录</button>
+
+		<LoginApp ref="loginRef" @close="close" />
 
 
 	</view>
@@ -41,6 +43,7 @@
 
 <script>
 	import Navbar from '@/components/uni-nav-bar/uni-nav-bar.vue'
+	import LoginApp from '@/components/login-app/login-app.vue'
 	export default {
 		data() {
 			return {
@@ -48,7 +51,17 @@
 			}
 		},
 		components: {
-			Navbar
+			Navbar,
+			LoginApp
+		},
+		methods:{
+			login(){
+				this.$refs.loginRef.open()
+			},
+			close(){
+				this.$refs.loginRef.close()
+			}
+			
 		}
 	}
 </script>

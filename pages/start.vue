@@ -14,24 +14,28 @@
 			}
 		},
 		onLoad() {
-			navigateTo('/pages/home')
-			// uni.login({
-			// 	provider: 'weixin',
-			// 	success: function(res) {
-			// 		console.log(res)
-			// 		// 19bc545a393a25177083d4a748807cc0
-			// 		// cadd61f6-67f1-48a1-b716-c5c3d5eba5ea
+			// navigateTo('/pages/home')
+			uni.login({
+				provider: 'weixin',
+				success: function(res) {
+					console.log(res)
+					// 19bc545a393a25177083d4a748807cc0
+					// cadd61f6-67f1-48a1-b716-c5c3d5eba5ea
 					
-			// 		LoginByWx({
-			// 			data: {
-			// 				code:res.code,
-			// 			}
-			// 		}).then(res=>{
-			// 			console.log(res)
-			// 			uni.setStorageSync('sessionToken', res.data.UUID)
-			// 		})
-			// 	}
-			// })
+					LoginByWx({
+						data: {
+							code:res.code,
+						}
+					}).then(res=>{
+						console.log(res)
+						uni.setStorageSync('sessionToken', res.data.openid)
+						if(res.data.nickName){
+							uni.setStorageSync('user', JSON.stringify(res.data))
+						}
+						navigateTo('/pages/home')
+					})
+				}
+			})
 		},
 		methods:{
 			getuserinfo(e){
